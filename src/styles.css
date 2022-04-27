@@ -31,6 +31,13 @@ ol {
   flex-direction: center;
   padding: auto;
   margin: auto;
+}
 
+.productos{
+  display:flexbox;
+  flex-direction:grid;
+  background-color: lightblue;
+  padding: 1px 1px;
+  margin: auto;
 
 }
