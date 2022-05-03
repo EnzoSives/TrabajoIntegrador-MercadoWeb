@@ -1,6 +1,7 @@
 const listaProductos = document.getElementById("produ");
 const botonComprar = document.getElementById("comprar");
 const cantidad = document.getElementById("input");
+const enviarForm = document.getElementById("enviar");
 let compraTotal: number;
 
 let productos: string[] = ["Pan", "Galletitas", "Azucar", "Aceite"];
@@ -54,4 +55,9 @@ let comprar = () => {
   }
 };
 
+let enviarFormulario = () => {
+  alert("Sus datos fueron enviados exitosamente");
+};
+
 botonComprar?.addEventListener("click", comprar);
+enviarForm?.addEventListener("click", enviarFormulario);
