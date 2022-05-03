@@ -1,5 +1,7 @@
 const listaProductos = document.getElementById("produ");
-let compraTotal: number = 0;
+const botonComprar = document.getElementById("comprar");
+const cantidad = document.getElementById("input");
+let compraTotal: number;
 
 let productos: string[] = ["Pan", "Galletitas", "Azucar", "Aceite"];
 let stock: number[] = [50, 40, 32, 52];
@@ -28,11 +30,28 @@ let cargarProductos = () => {
     ulprodu.appendChild(prodName);
     ulprodu.appendChild(prodPrice);
 
-    compraTotal += Number(prodPrice.value) * Number(amountSelect.value);
-
-    console.log(prodName);
-    console.log(prodPrice);
-    console.log(compraTotal);
+    compraTotal = Number(prodPrice.value) * Number(amountSelect.value);
   }
 };
 window.onload = cargarProductos();
+
+let comprar = () => {
+  let valorTotal = 0;
+  for (let i = 0; i < stock.length; i++) {
+    let selectorCantidad = document.getElementById(`amountSelect-${i}`);
+    let cantidadSeleccionada = Number(selectorCantidad.value);
+    if (cantidadSeleccionada > 0) {
+      console.log(
+        `Compraste ${cantidadSeleccionada} unidades de ${productos[i]}`
+      );
+      valorTotal += precio[i] * cantidadSeleccionada;
+    }
+  }
+  if (valorTotal > 0) {
+    console.log(`El costo total de su compra es $${valorTotal}`);
+  } else {
+    console.log(`Debe seleccionar al menos un producto`);
+  }
+};
+
+botonComprar?.addEventListener("click", comprar);
